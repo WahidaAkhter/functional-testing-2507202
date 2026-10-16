@@ -54,6 +54,7 @@ secrets/
 # IDEs and Editors
 .vscode/
 .idea/
+pyrightconfig.json
 *.swp
 *.swo
 *~
