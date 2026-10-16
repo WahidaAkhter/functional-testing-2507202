@@ -1,0 +1,98 @@
+name: CI/CD Push-to-Live Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # =========================================================================
+  # 1. Test Job: Python Matrix (3.10, 3.11, 3.12), Linting & 100% Coverage Gate
+  # =========================================================================
+  test:
+    name: test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint codebase with Flake8
+        run: |
+          flake8 target.py app.py smoke_test.py tests
+
+      - name: Run test suite & verify 100% line and branch coverage
+        run: |
+          pytest --cov=target --cov-branch --cov-report=xml --cov-report=term-missing --cov-fail-under=100
+
+      - name: Upload coverage report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report-python-${{ matrix.python-version }}
+          path: coverage.xml
+          if-no-files-found: error
+
+  # =========================================================================
+  # 2. Deploy Job: Triggered only on pushes to main when all test matrices pass
+  # =========================================================================
+  deploy:
+    name: deploy
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Trigger live deployment hook
+        run: |
+          if [ -n "${{ secrets.DEPLOY_HOOK_URL }}" ]; then
+            echo "[*] Triggering deployment hook for commit ${{ github.sha }}..."
+            curl -sS -X POST "${{ secrets.DEPLOY_HOOK_URL }}"
+            echo "[+] Deployment hook triggered successfully."
+          else
+            echo "[!] DEPLOY_HOOK_URL secret is not set. Skipping remote webhook trigger."
+          fi
+
+  # =========================================================================
+  # 3. Smoke Test Job: Verify deployed commit SHA and live API endpoints
+  # =========================================================================
+  smoke-test:
+    name: smoke-test
+    needs: deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run live smoke test against live deployment
+        run: |
+          if [ -n "${{ secrets.LIVE_URL }}" ]; then
+            echo "[*] Running smoke tests against ${{ secrets.LIVE_URL }} (expected SHA: ${{ github.sha }})..."
+            python smoke_test.py --url "${{ secrets.LIVE_URL }}" --sha "${{ github.sha }}" --timeout 240
+          else
+            echo "[!] LIVE_URL secret is not set. Skipping remote live smoke test verification."
+          fi
