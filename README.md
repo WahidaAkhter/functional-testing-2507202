@@ -1,6 +1,6 @@
 # Functional Testing, CI/CD and Live Deployment
 
-[![CI/CD Push-to-Live Pipeline](https://github.com/WahidaAkhter/functional-testing-suite/actions/workflows/ci.yml/badge.svg)](https://github.com/WahidaAkhter/functional-testing-suite/actions/workflows/ci.yml)
+[![CI/CD Push-to-Live Pipeline](https://github.com/WahidaAkhter/functional-testing-2507202/actions/workflows/ci.yml/badge.svg)](https://github.com/WahidaAkhter/functional-testing-2507202/actions/workflows/ci.yml)
 ![Python Versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 ![Coverage](https://img.shields.io/badge/coverage-100%25%20branch-brightgreen)
 ![Flake8](https://img.shields.io/badge/lint-flake8%20clean-success)
@@ -19,7 +19,7 @@ Comprehensive functional testing suite, interactive web frontend, and automated 
   1. `test`: Python matrix (`3.10`, `3.11`, `3.12`), linting with Flake8, pytest with 100% line & branch coverage enforcement, and artifact upload.
   2. `deploy`: Gate requiring `test` to pass; triggers deploy webhook on Render/Railway.
   3. `smoke-test`: Polls `/health` for the new commit SHA and verifies live API requests.
-- **Live Deployment URL**: `https://functional-testing-suite.onrender.com` (configured with direct auto-deploy **OFF**).
+- **Live Deployment URL**: `https://functional-testing-2507202.onrender.com` (configured with direct auto-deploy **OFF**).
 
 ---
 
@@ -31,8 +31,8 @@ Comprehensive functional testing suite, interactive web frontend, and automated 
 
 ### 2. Clone and Setup Environment
 ```bash
-git clone https://github.com/WahidaAkhter/functional-testing-suite.git
-cd functional-testing-suite
+git clone https://github.com/WahidaAkhter/functional-testing-2507202.git
+cd functional-testing-2507202
 
 # Create virtual environment
 python -m venv .venv
@@ -91,8 +91,8 @@ uvicorn app:app --reload --port 8000
 
 ## 🌐 Live Deployment & Health Verification
 
-- **Live Application URL**: `https://functional-testing-suite.onrender.com`
-- **Live Health Endpoint**: `https://functional-testing-suite.onrender.com/health`
+- **Live Application URL**: `https://functional-testing-2507202.onrender.com`
+- **Live Health Endpoint**: `https://functional-testing-2507202.onrender.com/health`
 
 ### Health Endpoint Response
 ```json
@@ -125,7 +125,7 @@ To enable the push-to-live deployment pipeline, configure the following secrets 
 | Secret Name | Description | Example |
 |-------------|-------------|---------|
 | `DEPLOY_HOOK_URL` | Webhook URL from hosting provider (Render Deploy Hook) | `https://api.render.com/deploy/srv-xxxx?key=yyyy` |
-| `LIVE_URL` | Public URL of deployed service | `https://functional-testing-suite.onrender.com` |
+| `LIVE_URL` | Public URL of deployed service | `https://functional-testing-2507202.onrender.com` |
 
 ---
 

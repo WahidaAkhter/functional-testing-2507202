@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: functional-testing-suite
+    name: functional-testing-2507202
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
