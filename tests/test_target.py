@@ -54,10 +54,6 @@ class TestIsAdult:
         assert res is expected
         assert type(res) is bool
 
-    def test_deliberate_ci_pipeline_gate_failure(self):
-        """Temporary failing test to demonstrate CI red run and blocked deployment gate."""
-        assert False, "Deliberate failure to demonstrate CI/CD deployment gate"
-
     @pytest.mark.parametrize(
         "invalid_age",
         [-1, -0.01, -18, -100],
