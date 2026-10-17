@@ -301,8 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resultBox.className = 'result-box success';
         resultBox.innerHTML = `
           <div class="result-header">
-            <span class="result-status">Success</span>
-            <span class="result-type-tag">type: ${data.result_type}</span>
+            <span class="result-status">● Success (200 OK)</span>
+            <span class="result-type-tag">Return Type: ${data.result_type}</span>
           </div>
           <div class="result-content">${escapeHtml(JSON.stringify(data.result, null, 2))}</div>
         `;
@@ -310,8 +310,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resultBox.className = 'result-box error';
         resultBox.innerHTML = `
           <div class="result-header">
-            <span class="result-status">Exception</span>
-            <span class="result-type-tag" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5;">${data.error_type}</span>
+            <span class="result-status">▲ Caught Exception</span>
+            <span class="result-type-tag" style="background: rgba(244, 63, 94, 0.25); color: #fecdd3; border: 1px solid rgba(244, 63, 94, 0.4);">${data.error_type}</span>
           </div>
           <div class="result-content">${escapeHtml(data.error_message)}</div>
         `;

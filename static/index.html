@@ -3,49 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Target TestBench · Functional Testing, CI/CD & Live Deployment</title>
-  <meta name="description" content="Interactive functional testing suite and live CI/CD verification dashboard for target.py (16 functions with 100% branch coverage).">
+  <title>Target TestBench · SQA Functional Testing & CI/CD Suite</title>
+  <meta name="description" content="Interactive functional testing suite and automated live CI/CD dashboard for target.py (16 functions with 100% branch coverage).">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body class="dark-theme">
-  <!-- Top Ambient Glow -->
+  <!-- Cyber Ambient Glow Backgrounds -->
   <div class="ambient-glow glow-1"></div>
   <div class="ambient-glow glow-2"></div>
+  <div class="matrix-grid-overlay"></div>
 
   <!-- Navigation / Header -->
   <header class="app-header">
     <div class="header-container">
       <div class="brand">
         <div class="brand-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
         </div>
         <div class="brand-text">
-          <h1 class="brand-title">Target TestBench</h1>
-          <span class="brand-subtitle">16 Functions · 100% Branch Coverage · Automated CI/CD</span>
+          <div class="brand-title-row">
+            <h1 class="brand-title">Target TestBench</h1>
+            <span class="version-tag">v1.0 Live</span>
+          </div>
+          <span class="brand-subtitle">Functional Testing · 100% Branch Coverage · CI/CD Push-to-Live</span>
         </div>
       </div>
 
       <div class="header-meta">
-        <div class="health-pill" id="healthPill" title="Live Health Check status">
+        <!-- Student Info Chip -->
+        <div class="student-chip" title="Candidate Details">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="student-name">Wahida Akhter</span>
+          <span class="student-id">ID: 2507202</span>
+        </div>
+
+        <div class="health-pill" id="healthPill" title="Live Health Endpoint Status">
           <span class="pulse-dot"></span>
           <span class="health-text" id="healthStatusText">Connecting...</span>
         </div>
+
         <div class="metric-chip">
           <span class="chip-label">Coverage</span>
-          <span class="chip-value highlight">100%</span>
+          <span class="chip-value highlight">100% Branch</span>
         </div>
+
         <div class="metric-chip">
           <span class="chip-label">Tests</span>
-          <span class="chip-value">293 Passed</span>
+          <span class="chip-value">301 Passed</span>
         </div>
-        <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme" title="Toggle Theme">
-          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme" title="Toggle Theme (Emerald Dark / Light)">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
         </button>
@@ -55,37 +72,81 @@
 
   <!-- Main Container -->
   <main class="main-content">
-    <!-- Hero Banner -->
+    <!-- Hero Banner with Architecture Overview -->
     <section class="hero-section">
       <div class="hero-card">
-        <div class="hero-badge">Verified Test Suite & Live Deployment</div>
-        <h2 class="hero-title">Interactive Functional Test Runner</h2>
+        <div class="hero-header-line">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Automated CI/CD Push-to-Live Architecture
+          </div>
+          <span class="hero-badge-sub">3 Jobs · 1 Quality Gate · Smoke Verified</span>
+        </div>
+
+        <h2 class="hero-title">Interactive Functional Test Runner &amp; Verification Studio</h2>
         <p class="hero-description">
-          Execute and inspect all 16 target functions (11 data-type functions &amp; 5 mathematics functions) in real-time.
-          Test valid inputs, inspect boundary values, and observe exact exception handling verified by automated GitHub Actions CI.
+          Execute and inspect all <strong>16 target functions</strong> (11 data-type functions &amp; 5 mathematics functions) directly in the browser. Test valid inputs, observe boundary value behaviors, and verify strict Python exception handling backed by a 100% branch coverage test suite.
         </p>
+
+        <!-- 3-Step Interactive Guide Ribbon -->
+        <div class="guide-ribbon">
+          <div class="guide-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <strong>Select Function</strong>
+              <span>Choose from 16 functions or filter by Category</span>
+            </div>
+          </div>
+          <div class="guide-arrow">➔</div>
+          <div class="guide-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <strong>Click Quick Preset</strong>
+              <span>Loads edge-cases, boundaries, or error inputs</span>
+            </div>
+          </div>
+          <div class="guide-arrow">➔</div>
+          <div class="guide-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <strong>Run &amp; Inspect</strong>
+              <span>Instant return value, type, and live console output</span>
+            </div>
+          </div>
+        </div>
+
         <div class="hero-tags">
-          <span class="tag">Python 3.10 / 3.11 / 3.12</span>
-          <span class="tag">pytest-cov 100% Line &amp; Branch</span>
-          <span class="tag">Flake8 Clean</span>
-          <span class="tag">Push-to-Live Automated Gate</span>
+          <span class="tag"><span class="tag-icon">⚡</span> Python 3.10 / 3.11 / 3.12</span>
+          <span class="tag"><span class="tag-icon">🛡️</span> pytest-cov 100% Line &amp; Branch</span>
+          <span class="tag"><span class="tag-icon">✨</span> Flake8 Clean</span>
+          <span class="tag"><span class="tag-icon">🔒</span> Push-to-Live Automated Gate</span>
+          <span class="tag"><span class="tag-icon">🚀</span> Render Auto-Deploy: OFF (Webhook Only)</span>
         </div>
       </div>
     </section>
 
     <!-- Toolbar: Search & Filter Tabs -->
     <section class="toolbar-section">
-      <div class="filter-group" id="filterTabs">
-        <button class="filter-tab active" data-filter="all">All Functions (16)</button>
-        <button class="filter-tab" data-filter="data-type">Data-Type (11)</button>
-        <button class="filter-tab" data-filter="mathematics">Mathematics (5)</button>
+      <div class="toolbar-left">
+        <span class="toolbar-label">Filter Category:</span>
+        <div class="filter-group" id="filterTabs">
+          <button class="filter-tab active" data-filter="all">
+            <span class="tab-indicator"></span> All Functions (16)
+          </button>
+          <button class="filter-tab" data-filter="data-type">
+            <span class="tab-indicator"></span> Data-Type (11)
+          </button>
+          <button class="filter-tab" data-filter="mathematics">
+            <span class="tab-indicator"></span> Mathematics (5)
+          </button>
+        </div>
       </div>
 
       <div class="search-box">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="text" id="searchInput" placeholder="Search functions or parameters...">
+        <input type="text" id="searchInput" placeholder="Search function name, description, or parameter...">
       </div>
     </section>
 
@@ -93,7 +154,7 @@
     <section class="functions-grid" id="functionsGrid">
       <div class="loading-state">
         <div class="spinner"></div>
-        <p>Loading target functions catalog...</p>
+        <p>Connecting to live backend and loading function catalog...</p>
       </div>
     </section>
   </main>
@@ -104,7 +165,7 @@
       <div class="footer-left">
         <div class="live-indicator">
           <span class="live-dot"></span>
-          <span>Live Site Status: <strong>Operational</strong></span>
+          <span>Live Deployment: <strong class="status-online">Operational &amp; Healthy</strong></span>
         </div>
         <div class="footer-links">
           <a href="/health" target="_blank" class="footer-link">
@@ -120,6 +181,12 @@
             </svg>
             Interactive Swagger API
           </a>
+          <a href="https://github.com/WahidaAkhter/functional-testing-2507202" target="_blank" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            GitHub Repository
+          </a>
         </div>
       </div>
 
@@ -127,8 +194,9 @@
         <div class="sha-container">
           <span class="sha-label">Deployed Commit SHA</span>
           <div class="sha-badge" id="footerShaBadge">
+            <span class="sha-dot"></span>
             <span class="sha-hash" id="footerShaText">Loading...</span>
-            <button class="copy-btn" id="copyShaBtn" title="Copy Commit SHA">
+            <button class="copy-btn" id="copyShaBtn" title="Copy Commit SHA to clipboard">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -137,7 +205,7 @@
           </div>
         </div>
         <div class="footer-note">
-          Functional Testing, CI/CD and Live Deployment Assignment
+          Student: <strong>Wahida Akhter</strong> (ID: <strong>2507202</strong>) · SQA Assignment
         </div>
       </div>
     </div>
