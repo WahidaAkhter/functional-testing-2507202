@@ -161,7 +161,7 @@ Per assignment instructions, `target.py` is preserved unmodified. The following 
 
 The demonstration video covers:
 1. **Walkthrough of the Code & Test Suite**:
-   - `pytest` running 293 tests with 100% line & branch coverage.
+   - `pytest` running 301 tests with 100% line & branch coverage.
    - Code inspection of `target.py`, `tests/test_target.py`, and `app.py`.
 2. **Push-to-Live Success Scenario**:
    - Make a change on a feature branch, create PR, and merge to `main`.
