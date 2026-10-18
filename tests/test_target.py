@@ -5,7 +5,7 @@ and wrong types. Reaches 100% line and branch coverage.
 """
 
 import math
-import pytest
+import pytest  # pyrefly: ignore[missing-import]
 
 from target import (
     average,
