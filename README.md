@@ -13,7 +13,7 @@ Comprehensive functional testing suite, interactive web frontend, and automated 
 ## 📌 Project Summary
 
 - **Target Module**: `target.py` (16 functions: 11 data-type functions, 5 mathematics functions).
-- **Test Suite**: `tests/test_target.py` with **293 test cases**, achieving **100% line and branch coverage**.
+- **Test Suite**: `tests/test_target.py` with **301 test cases**, achieving **100% line and branch coverage**.
 - **Interactive Web App**: Modern responsive dashboard (`app.py`, `static/index.html`, `static/style.css`, `static/app.js`) to test all 16 functions with live presets and exception inspection.
 - **CI/CD Pipeline**: GitHub Actions (`.github/workflows/ci.yml`) featuring a 3-job, 1-gate automated workflow:
   1. `test`: Python matrix (`3.10`, `3.11`, `3.12`), linting with Flake8, pytest with 100% line & branch coverage enforcement, and artifact upload.
