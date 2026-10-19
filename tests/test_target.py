@@ -36,7 +36,7 @@ class TestIsAdult:
     @pytest.mark.parametrize(
         "age, expected",
         [
-            (18, False),       # Exact boundary: 18 is an adult
+            (18, True),       # Exact boundary: 18 is an adult
             (17, False),      # Just below boundary: 17 is a minor
             (19, True),       # Just above boundary: 19 is an adult
             (0, False),       # Lower boundary for non-negative: 0 is minor
